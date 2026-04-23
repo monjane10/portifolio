@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --background-color: #ffffff;
+  --surface-color: #ffffff;
+  --surface-muted: #f8fafc;
+  --title-color: #111827;
+  --text-color: #49566d;
+  --muted-color: #7a879b;
+  --primary-color: #295fbd;
+  --primary-color-hover: #214f9d;
+  --primary-soft: rgba(41, 95, 189, 0.08);
+  --border-color: rgba(15, 23, 42, 0.08);
+  --section-divider-color: rgba(15, 23, 42, 0.08);
+  --soft-shadow: 0 1px 3px rgba(15, 23, 42, 0.012);
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  color: var(--text-color);
+  background: #ffffff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.65;
+  font-weight: 500;
+}
+
+[data-theme='dark'] {
+  --background-color: #0f172a;
+  --surface-color: #1e293b;
+  --surface-muted: #334155;
+  --title-color: #f1f5f9;
+  --text-color: #cbd5e1;
+  --muted-color: #94a3b8;
+  --primary-color: #3b82f6;
+  --primary-color-hover: #2563eb;
+  --primary-soft: rgba(59, 130, 246, 0.12);
+  --border-color: rgba(148, 163, 184, 0.15);
+  --section-divider-color: rgba(148, 163, 184, 0.22);
+  --soft-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--background-color);
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.page-shell {
+  width: min(1120px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 0 0 56px;
+}
+
+main {
+  display: grid;
+  gap: 10px;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--title-color);
+}
+
+h1 {
+  font-size: clamp(3.4rem, 8vw, 5.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.3rem;
+  line-height: 1.2;
+  font-weight: 650;
+}
+
+p {
+  font-size: 1rem;
+}
+
+@media (max-width: 640px) {
+  .page-shell {
+    width: min(100%, calc(100% - 24px));
+    padding-bottom: 36px;
+  }
+}
