@@ -186,7 +186,7 @@ function App() {
                         />
                       </svg>
                     </span>
-                    Entrar em contacto
+                    Falar comigo
                   </a>
                   <a className="button button-secondary" href="#projectos">
                     <span className="button-icon" aria-hidden="true">
@@ -209,7 +209,7 @@ function App() {
                         />
                       </svg>
                     </span>
-                    Ver projectos
+                    Ver soluções que já construí
                   </a>
                 </div>
 
