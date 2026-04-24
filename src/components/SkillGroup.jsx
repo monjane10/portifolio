@@ -130,15 +130,15 @@ export function SkillGroup({ title, items }) {
       {hasTwoColumns ? (
         <div className="skill-list-columns">
           <ul className="skill-list">
-            {firstColumnItems.map((item) => (
-              <li className="skill-list-item" key={item}>
+            {firstColumnItems.map((item, index) => (
+              <li className="skill-list-item" key={`col-1-${item}-${index}`}>
                 {item}
               </li>
             ))}
           </ul>
           <ul className="skill-list">
-            {secondColumnItems.map((item) => (
-              <li className="skill-list-item" key={item}>
+            {secondColumnItems.map((item, index) => (
+              <li className="skill-list-item" key={`col-2-${item}-${index}`}>
                 {item}
               </li>
             ))}
@@ -146,8 +146,8 @@ export function SkillGroup({ title, items }) {
         </div>
       ) : (
         <ul className="skill-list">
-          {items.map((item) => (
-            <li className="skill-list-item" key={item}>
+          {items.map((item, index) => (
+            <li className="skill-list-item" key={`col-single-${item}-${index}`}>
               {item}
             </li>
           ))}
