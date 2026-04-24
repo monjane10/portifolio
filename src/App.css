@@ -188,6 +188,10 @@
   gap: 36px;
 }
 
+.hero-grid > * {
+  min-width: 0;
+}
+
 .hero-copy {
   display: grid;
   gap: 11px;

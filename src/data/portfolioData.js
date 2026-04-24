@@ -16,7 +16,7 @@ export const portfolio = {
   availability: 'Disponível para crescer a nível profissional e pessoal em software, automação e IA aplicada.',
   email: 'lourencomonjane2@gmail.com',
   photo: profileImage,
-  location: 'FPLM, Maputo - Moçambique',
+  location: 'Maputo, Moçambique',
 
   heroTags: [
     'Fullstack',
