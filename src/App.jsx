@@ -1,5 +1,5 @@
 import './App.css'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Section } from './components/Section'
 import { TimelineList } from './components/TimelineList'
 import { SkillGroup } from './components/SkillGroup'
@@ -13,6 +13,7 @@ function App() {
     return saved ? saved === 'dark' : false
   })
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const menuRef = useRef(null)
 
   useEffect(() => {
     const theme = isDark ? 'dark' : 'light'
@@ -20,11 +21,36 @@ function App() {
     document.documentElement.setAttribute('data-theme', theme)
   }, [isDark])
 
+  useEffect(() => {
+    if (!isMenuOpen) {
+      return undefined
+    }
+
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+
+    const firstLink = menuRef.current?.querySelector('a')
+    firstLink?.focus()
+
+    const handleEscape = (event) => {
+      if (event.key === 'Escape') {
+        setIsMenuOpen(false)
+      }
+    }
+
+    document.addEventListener('keydown', handleEscape)
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+      document.removeEventListener('keydown', handleEscape)
+    }
+  }, [isMenuOpen])
+
   const [firstName, ...remainingNames] = portfolio.name.split(' ')
   const lastName = remainingNames.join(' ')
 
   return (
-    <div className="page-shell">
+    <div className={`page-shell${isMenuOpen ? ' menu-open' : ''}`}>
       <header className="topbar">
         <a className="brand" href="#hero">
           {portfolio.shortName}
@@ -36,7 +62,7 @@ function App() {
             type="button"
             aria-expanded={isMenuOpen}
             aria-controls="site-navigation"
-            aria-label="Abrir menu"
+            aria-label={isMenuOpen ? 'Fechar menu' : 'Abrir menu'}
             onClick={() => setIsMenuOpen((current) => !current)}
           >
             <span />
@@ -58,7 +84,12 @@ function App() {
           </button>
         </div>
 
-        <nav className={`nav${isMenuOpen ? ' nav-open' : ''}`} id="site-navigation">
+        <nav
+          ref={menuRef}
+          className={`nav${isMenuOpen ? ' nav-open' : ''}`}
+          id="site-navigation"
+          aria-label="Menu principal"
+        >
           <button
             className="nav-close"
             type="button"
