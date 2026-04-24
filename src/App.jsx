@@ -13,6 +13,8 @@ function App() {
     return saved ? saved === 'dark' : false
   })
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [typedGreeting, setTypedGreeting] = useState('')
+  const [isGreetingComplete, setIsGreetingComplete] = useState(false)
   const menuRef = useRef(null)
 
   useEffect(() => {
@@ -45,6 +47,40 @@ function App() {
       document.removeEventListener('keydown', handleEscape)
     }
   }, [isMenuOpen])
+
+  useEffect(() => {
+    const fullGreeting = portfolio.greeting
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+    if (prefersReducedMotion) {
+      setTypedGreeting(fullGreeting)
+      setIsGreetingComplete(true)
+      return undefined
+    }
+
+    setTypedGreeting('')
+    setIsGreetingComplete(false)
+
+    let index = 0
+    let timeoutId
+
+    const typeNextCharacter = () => {
+      index += 1
+      setTypedGreeting(fullGreeting.slice(0, index))
+
+      if (index < fullGreeting.length) {
+        timeoutId = window.setTimeout(typeNextCharacter, 70)
+      } else {
+        setIsGreetingComplete(true)
+      }
+    }
+
+    timeoutId = window.setTimeout(typeNextCharacter, 120)
+
+    return () => {
+      window.clearTimeout(timeoutId)
+    }
+  }, [])
 
   const [firstName, ...remainingNames] = portfolio.name.split(' ')
   const lastName = remainingNames.join(' ')
@@ -114,7 +150,11 @@ function App() {
           <div className="hero-grid">
             <div className="hero-copy">
               <div className="hero-copy-intro">
-                {portfolio.greeting}
+                <p className="hero-greeting" aria-label={portfolio.greeting}>
+                  <span className={`typewriter-text${isGreetingComplete ? ' typewriter-complete' : ''}`}>
+                    {typedGreeting}
+                  </span>
+                </p>
                 <h1>
                   <span className="hero-name-line hero-name-line-primary">{firstName}</span>
                   {lastName ? <span className="hero-name-line hero-name-line-secondary">{lastName}</span> : null}

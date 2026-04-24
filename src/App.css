@@ -168,6 +168,12 @@
   font-weight: 500;
 }
 
+.typewriter-text {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.2em;
+}
+
 .hero-greeting-pill {
   display: inline-flex;
   align-items: center;
