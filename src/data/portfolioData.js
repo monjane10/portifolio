@@ -177,12 +177,12 @@ Resultado: experiencia fluida e eficiente na gestao de transporte urbano`,
       type: 'Aplicação Mobile',
       title: 'Aplicativo - Geração de Dietas Personalizadas',
       description:
-        `Aplicacao mobile que gera planos alimentares personalizados com suporte de inteligencia artificial.
-Geracao automatica de dietas com base no perfil do utilizador
-Integracao com modelos de IA para recomendacoes inteligentes
+        `Aplicação mobile que gera planos alimentares personalizados com suporte de inteligência artificial.
+Geração automática de dietas com base no perfil do utilizador
+Integração com modelos de IA para recomendações inteligentes
 Interface simples e orientada ao utilizador
 Backend optimizado para processamento de dados personalizados
-Resultado: recomendacoes alimentares mais precisas e adaptadas a cada utilizador`,
+Resultado: recomendações alimentares mais precisas e adaptadas a cada utilizador`,
       stack: ['React Native', 'Node.js', 'OpenAI API'],
       image: aplicativoImg,
       previewClassName: 'project-preview-handset',
