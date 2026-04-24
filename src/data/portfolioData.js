@@ -12,17 +12,12 @@ export const portfolio = {
   name: 'Lourenço Monjane',
   role: 'Engenheiro de Software & IA Automation',
   summary:
-    'Sou um problem solver por natureza, movido pelo desejo de criar soluções com significado através da inovação, criatividade e tecnologia. Com experiência em desenvolvimento de software, automação de processos e integrações, procuro transformar ideias em experiências digitais funcionais, impactantes e orientadas para resolver desafios reais.',
+    'Sou engenheiro de software com foco em desenvolvimento fullstack e automação com IA. Actuo na criação de sistemas web e aplicações inteligentes que optimizam processos, reduzem esforço manual e melhoram a tomada de decisão. Tenho experiência no desenvolvimento de plataformas completas, desde a arquitectura backend até interfaces modernas, integrando APIs, bases de dados e workflows automatizados. O meu foco é simples: transformar problemas reais em soluções digitais eficientes e escaláveis.',
   availability: 'Disponível para crescer a nível profissional e pessoal em software, automação e IA aplicada.',
   email: 'lourencomonjane2@gmail.com',
   photo: profileImage,
   location: 'Maputo, Moçambique',
 
-  heroTags: [
-    'Fullstack',
-    'Automação de processos',
-    'Resolução de problemas',
-  ],
 
   contactLinks: [
     {
@@ -70,7 +65,7 @@ export const portfolio = {
 
   education: [
     {
-      period: 'Finalista',
+      period: '2022 - 2026',
       title: 'Licenciatura em Desenvolvimento de Software',
       company: 'Universidade São Tomas de Moçambique - USTM',
       location: 'Maputo, Moçambique',
@@ -80,7 +75,7 @@ export const portfolio = {
     {
       period: '2020 - 2021',
       title: 'Ensino Médio',
-      company: 'Escola Secundaria da Munhuana',
+      company: 'Escola Secundária da Munhuana',
       location: 'Maputo, Moçambique',
       description:
         'Base acadêmica que reforçou disciplina, curiosidade e preparação para a transição para a área de tecnologia.',
@@ -119,7 +114,7 @@ export const portfolio = {
       type: 'Sistema Web',
       title: 'Clínica - Gestão de Saúde',
       description:
-        'Plataforma web desenvolvida para digitalizar e optimizar a gestão de clínicas e unidades de saúde, centralizando processos críticos como registo de pacientes, marcação de consultas, acompanhamento clínico e gestão de informação médica. O sistema permite o cadastro completo de pacientes, histórico clínico estruturado, registo de exames e emissão de receitas médicas, garantindo maior organização e rastreabilidade dos dados. Para melhorar a experiência e reduzir faltas às consultas, o sistema incorpora um mecanismo de notificações e lembretes automáticos, enviados previamente tanto para o médico quanto para o paciente.',
+        'Sistema web para gestão de clínicas que centraliza pacientes, consultas e histórico clínico numa única plataforma. Registo completo de pacientes e histórico médico estruturado. Marcação e acompanhamento de consultas. Emissão de receitas e registo de exames.Notificações automáticas para reduzir faltas e melhorar a comunicação. Resultado: maior organização, rastreabilidade e eficiência nos processos clínicos',
       stack: ['React.js', 'Node.js', 'PostgreSQL', 'Supabase', 'Tailwind CSS'],
       image: clinicaImg,
       links: {
@@ -130,7 +125,7 @@ export const portfolio = {
       type: 'Portal Web',
       title: 'Portal de Gestão Corporativa',
       description:
-        'Portal web corporativo com componente de IA e automação, desenvolvido para optimizar processos de recrutamento e gestão interna. A plataforma permite a criação de vagas, recolha estruturada de candidaturas e avaliação automática de candidatos através de um sistema de scoring baseado em critérios definidos pelo RH. Com integração de workflows automatizados, o sistema analisa dados como experiência, formação e competências, gerando classificações objectivas e priorizando candidatos de forma eficiente. A arquitetura escalável e o controlo de acessos por perfil garantem segurança, consistência e uma experiência intuitiva para múltiplos utilizadores.',
+        'Plataforma corporativa com IA para automatizar processos de recrutamento e gestão interna. Criação e gestão de vagas com recolha estruturada de candidaturas. Sistema de scoring automático baseado em critérios de RH. Avaliação inteligente de candidatos com base em dados reais. Workflows automatizados para optimizar o processo de selecção. Resultado: redução significativa do tempo de recrutamento e decisões mais objectivas',
       stack: ['React.js', 'Node.js', 'Supabase', 'n8n', 'LLMs para automação de scoring de candidatos'],
       image: portalImg,
       links: {
@@ -141,7 +136,7 @@ export const portfolio = {
       type: 'Sistema de Rastreamento',
       title: 'Rastro - Sistema de Rastreabilidade Alimentar',
       description:
-        'Plataforma de verificação de produtos alimentares desenvolvida para apoiar o controlo sanitário e a proteção do consumidor, permitindo validar a autenticidade de produtos através de QR Code. O sistema é centrado na entidade reguladora Instituto Nacional de Actividades Económicas, responsável pelo registo e gestão dos dados dos produtos, enquanto o consumidor pode consultar essas informações em tempo real, garantindo transparência e confiança no mercado. A solução integra frontend em React e backend em Node.js, com suporte a comunicação dinâmica via WebSockets.',
+        'Plataforma para verificação da autenticidade de produtos alimentares, focada em transparência e segurança do consumidor. Validação de produtos via QR Code. Consulta em tempo real de informações registadas. Sistema orientado à entidade reguladora para controlo sanitário. Comunicação em tempo real com WebSockets. Resultado: maior confiança do consumidor e melhor controlo de qualidade no mercado',
       stack: ['React.js', 'Node.js', 'Supabase', 'WebSockets', 'QR Code Generation'],
       image: rastroImg,
       links: {
@@ -152,8 +147,7 @@ export const portfolio = {
       type: 'Gestão de Vendas e Inventário',
       title: 'SGI - Sistema de Gestão de Vendas e Inventário',
       description:
-        'Aplicação full-stack para gestão de vendas e inventário com arquitetura baseada em eventos ao nível da base de dados. Implementa POS com registo de vendas e itens, controlo de inventário por mês, e sincronização automática de stock através de triggers PostgreSQL. Inclui geração dinâmica de SKU, snapshots de produto nas vendas, auditoria de operações e controlo de perfis com RLS.',
-      highlight: 'Arquitetura orientada a eventos com triggers para consistência automática do stock.',
+        'Sistema full-stack para gestão de vendas e controlo de stock com arquitectura orientada a eventos. Registo de vendas (POS) com snapshot de produtos. Controlo de inventário com sincronização automática. Triggers no PostgreSQL para consistência de dados. Geração dinâmica de SKU e auditoria de operações. Controlo de acessos com Row Level Security (RLS). Resultado: gestão de stock mais precisa e redução de inconsistências operacionais',
       stack: ['React.js', 'TypeScript', 'Supabase (PostgreSQL)', 'Netlify Functions'],
       image: sgiImg,
       links: {
@@ -163,8 +157,7 @@ export const portfolio = {
       type: 'Plataforma de Mobilidade',
       title: 'EasyCar - Aplicação Mobile de Transporte',
       description:
-        'Solução mobile desenvolvida em React Native para transporte urbano, conectando passageiros e motoristas numa experiência intuitiva, com solicitação de corridas, actualização de estado em tempo real, histórico de viagens e notificações instantâneas.',
-      highlight: 'Experiência fluída com rastreamento em tempo real e integração com mapas.',
+        'Aplicação mobile para transporte urbano com experiência em tempo real para passageiros e motoristas. Solicitação de corridas com geolocalização. Actualização de estado em tempo real. Histórico de viagens e notificações instantâneas. Integração com mapas para navegação. Resultado: experiência fluida e eficiente na gestão de transporte urbano',
       stack: ['React Native', 'Node.js', 'Google Maps API', 'Firebase', 'AsyncStorage'],
       image: easyCarImg,
       previewClassName: 'project-preview-handset',
@@ -178,8 +171,7 @@ export const portfolio = {
       type: 'Aplicação Mobile',
       title: 'Aplicativo - Geração de Dietas Personalizadas',
       description:
-        'Aplicação mobile inteligente desenvolvida para gerar dietas personalizadas com base nos dados e objectivos de cada cliente. A solução integra um backend em Node.js com modelos da OpenAI para criar recomendações alimentares mais ajustadas ao perfil do utilizador, através de uma experiência mobile simples, prática e intuitiva.',
-      highlight: 'Geração inteligente de planos alimentares personalizados com apoio de IA.',
+        'Aplicação mobile que gera planos alimentares personalizados com suporte de inteligência artificial. Geração automática de dietas com base no perfil do utilizador. Integração com modelos de IA para recomendações inteligentes. Interface simples e orientada ao utilizador. Backend optimizado para processamento de dados personalizados. Resultado: recomendações alimentares mais precisas e adaptadas a cada utilizador',
       stack: ['React Native', 'Node.js', 'OpenAI API'],
       image: aplicativoImg,
       previewClassName: 'project-preview-handset',

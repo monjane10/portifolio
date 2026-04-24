@@ -1,4 +1,4 @@
-const projectActions = [
+﻿const projectActions = [
   {
     key: 'live',
     label: 'Visualizar',
@@ -112,6 +112,20 @@ function getProjectTheme(project) {
   return 'midnight'
 }
 
+function getProjectDetails(description = '') {
+  const normalizedDescription = description
+    .replace(/\s+/g, ' ')
+    .replace(/\.([A-Z])/g, '. $1')
+    .trim()
+
+  const [bodyText, resultText] = normalizedDescription.split(/Resultado:\s*/i)
+
+  return {
+    bodyText: (bodyText ?? '').trim(),
+    result: resultText?.trim() ?? '',
+  }
+}
+
 export function ProjectCard({ project }) {
   const links = project.links ?? {}
   const previewTheme = project.theme ?? getProjectTheme(project)
@@ -122,6 +136,7 @@ export function ProjectCard({ project }) {
   const imageClassName = ['project-preview-image', project.imageClassName].filter(Boolean).join(' ')
   const imageStyle = project.imageStyle ?? {}
   const availableActions = projectActions.filter((action) => links[action.key])
+  const { bodyText, result } = getProjectDetails(project.description)
 
   return (
     <article className="project-card project-card-visual">
@@ -155,24 +170,30 @@ export function ProjectCard({ project }) {
                 const isLiveAction = action.key === 'live'
 
                 return (
-                <a
-                  key={action.key}
-                  className={`project-action${isLiveAction ? ' project-action-visualizar' : ''}`}
-                  href={href}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={action.label}
-                  title={action.label}
-                >
-                  {isLiveAction ? 'Visualizar' : action.icon}
-                </a>
+                  <a
+                    key={action.key}
+                    className={`project-action${isLiveAction ? ' project-action-visualizar' : ''}`}
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={action.label}
+                    title={action.label}
+                  >
+                    {isLiveAction ? 'Visualizar' : action.icon}
+                  </a>
                 )
               })}
             </div>
           ) : null}
         </div>
 
-        <p className="project-description">{project.description}</p>
+        <p className="project-description">{bodyText || project.description}</p>
+
+        {result ? (
+          <ul className="project-result-list">
+            <li><strong>Resultado:</strong> {result}</li>
+          </ul>
+        ) : null}
 
         <p className="project-stackline">{project.stack.join(' • ')}</p>
       </div>
