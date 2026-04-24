@@ -4,6 +4,26 @@
   align-items: center;
   gap: 24px;
   padding: 28px 0 18px;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1120px, calc(100% - 48px));
+  z-index: 90;
+  border-bottom: 1px solid var(--section-divider-color);
+  background: color-mix(in srgb, var(--background-color) 82%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.page-shell > main {
+  padding-top: 96px;
+}
+
+@media (max-width: 640px) {
+  .topbar {
+    width: min(100%, calc(100% - 24px));
+  }
 }
 
 .brand {
@@ -93,8 +113,8 @@
   background: transparent;
   color: var(--text-color);
   font-size: 0.85rem;
-  border: none;
-  min-height: auto;
+  border: 1px solid transparent;
+  min-height: 34px;
   padding: 0 12px;
 }
 
@@ -116,7 +136,6 @@
   height: 18px;
 }
 
-.nav a:hover,
 .button:hover,
 .contact-pill:hover,
 .contact-link:hover,
@@ -124,11 +143,36 @@
   transform: translateY(-1px);
 }
 
-.nav a:hover,
 .contact-pill:hover,
 .contact-link:hover {
   border-color: rgba(41, 95, 189, 0.18);
   box-shadow: var(--soft-shadow);
+}
+
+.nav a:hover,
+.nav a:focus-visible,
+.nav a.nav-link-active {
+  color: var(--primary-color);
+  border-color: color-mix(in srgb, var(--primary-color) 30%, transparent);
+  background: color-mix(in srgb, var(--primary-soft) 85%, transparent);
+  box-shadow: none;
+  transform: none;
+}
+
+[data-theme='dark'] .nav a:hover,
+[data-theme='dark'] .nav a:focus-visible,
+[data-theme='dark'] .nav a.nav-link-active {
+  background: rgba(59, 130, 246, 0.16);
+  border-color: rgba(59, 130, 246, 0.4);
+}
+
+#hero,
+#experiencia,
+#projectos,
+#formacao,
+#skills,
+#contactos {
+  scroll-margin-top: 104px;
 }
 
 .hero {
@@ -1360,12 +1404,24 @@
     user-select: none;
   }
 
+  .page-shell > main {
+    padding-top: 82px;
+  }
+
+  #hero,
+  #experiencia,
+  #projectos,
+  #formacao,
+  #skills,
+  #contactos {
+    scroll-margin-top: 90px;
+  }
+
   .topbar {
     grid-template-columns: minmax(0, 1fr) auto;
     gap: 16px;
     padding: 20px 0 14px;
-    position: relative;
-    z-index: 70;
+    z-index: 90;
   }
 
   .brand {
@@ -1450,7 +1506,8 @@
   }
 
   .nav a:hover,
-  .nav a:focus-visible {
+  .nav a:focus-visible,
+  .nav a.nav-link-active {
     background: rgba(255, 255, 255, 0.16);
     border-color: rgba(15, 23, 42, 0.1);
     box-shadow: none;
@@ -1458,7 +1515,8 @@
   }
 
   [data-theme='dark'] .nav a:hover,
-  [data-theme='dark'] .nav a:focus-visible {
+  [data-theme='dark'] .nav a:focus-visible,
+  [data-theme='dark'] .nav a.nav-link-active {
     background: rgba(30, 41, 59, 0.6);
     border-color: rgba(148, 163, 184, 0.22);
   }
@@ -1686,6 +1744,7 @@
   }
 
   .topbar {
+    width: min(100%, calc(100% - 32px));
     gap: 14px;
   }
 

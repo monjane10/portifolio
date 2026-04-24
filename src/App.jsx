@@ -13,6 +13,7 @@ function App() {
     return saved ? saved === 'dark' : false
   })
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState('')
   const [typedGreeting, setTypedGreeting] = useState('')
   const [isGreetingComplete, setIsGreetingComplete] = useState(false)
   const menuRef = useRef(null)
@@ -84,6 +85,61 @@ function App() {
 
   const [firstName, ...remainingNames] = portfolio.name.split(' ')
   const lastName = remainingNames.join(' ')
+  const navItems = [
+    { id: 'experiencia', label: 'Experi\u00eancia' },
+    { id: 'projectos', label: 'Projectos' },
+    { id: 'formacao', label: 'Forma\u00e7\u00e3o' },
+    { id: 'skills', label: 'Skills' },
+    { id: 'contactos', label: 'Contactos' },
+  ]
+  useEffect(() => {
+    const heroSection = document.getElementById('hero')
+    const sections = navItems
+      .map((item) => document.getElementById(item.id))
+      .filter(Boolean)
+
+    if (!sections.length || !heroSection) {
+      return undefined
+    }
+
+    const entryById = new Map()
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          entryById.set(entry.target.id, entry)
+        })
+
+        const heroEntry = entryById.get('hero')
+        if (heroEntry?.isIntersecting && heroEntry.intersectionRatio >= 0.35) {
+          setActiveSection('')
+          return
+        }
+
+        const visibleEntries = sections
+          .map((section) => entryById.get(section.id))
+          .filter(Boolean)
+          .filter((entry) => entry.isIntersecting)
+          .sort((entryA, entryB) => entryB.intersectionRatio - entryA.intersectionRatio)
+
+        if (visibleEntries.length) {
+          setActiveSection(visibleEntries[0].target.id)
+        }
+      },
+      {
+        root: null,
+        rootMargin: '-40% 0px -50% 0px',
+        threshold: [0.15, 0.35, 0.6, 0.85],
+      },
+    )
+
+    observer.observe(heroSection)
+    sections.forEach((section) => observer.observe(section))
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [])
 
   return (
     <div className={`page-shell${isMenuOpen ? ' menu-open' : ''}`}>
@@ -135,11 +191,19 @@ function App() {
             <span />
             <span />
           </button>
-          <a href="#experiencia" onClick={() => setIsMenuOpen(false)}>Experiência</a>
-          <a href="#projectos" onClick={() => setIsMenuOpen(false)}>Projectos</a>
-          <a href="#formacao" onClick={() => setIsMenuOpen(false)}>Formação</a>
-          <a href="#skills" onClick={() => setIsMenuOpen(false)}>Skills</a>
-          <a href="#contactos" onClick={() => setIsMenuOpen(false)}>Contactos</a>
+                    {navItems.map((item) => (
+            <a
+              key={item.id}
+              href={`#${item.id}`}
+              className={activeSection === item.id ? 'nav-link-active' : ''}
+              onClick={() => {
+                setActiveSection(item.id)
+                setIsMenuOpen(false)
+              }}
+            >
+              {item.label}
+            </a>
+          ))}
         </nav>
       </header>
 
@@ -312,3 +376,5 @@ function App() {
 }
 
 export default App
+
+
