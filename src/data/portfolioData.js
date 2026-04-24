@@ -1,5 +1,5 @@
-import profileImage from '../assets/profile.jpeg'
-import clinicaImg from '../assets/clínica.png'
+﻿import profileImage from '../assets/profile.jpeg'
+import clinicaImg from '../assets/clinica.png'
 import portalImg from '../assets/portal.png'
 import rastroImg from '../assets/rastro.png'
 import sgiImg from '../assets/SGI.png'
@@ -112,9 +112,10 @@ export const portfolio = {
   projects: [
     {
       type: 'Sistema Web',
-      title: 'Clínica - Gestão de Saúde',
+      title: 'Sistema de Gestão de Clínicas - Clínica dos Olhos Choupal',
       description:
-        'Sistema web para gestão de clínicas que centraliza pacientes, consultas e histórico clínico numa única plataforma. Registo completo de pacientes e histórico médico estruturado. Marcação e acompanhamento de consultas. Emissão de receitas e registo de exames.Notificações automáticas para reduzir faltas e melhorar a comunicação. Resultado: maior organização, rastreabilidade e eficiência nos processos clínicos',
+        `Sistema web para gestão de clínicas que centraliza pacientes, consultas e histórico clínico numa única plataforma. Registo completo de pacientes e histórico médico estruturado. Marcação e acompanhamento de consultas. Emissão de receitas e registo de exames.
+Notificações automáticas para reduzir faltas e melhorar a comunicação. Resultado: maior organização, rastreabilidade e eficiência nos processos clínicos`,
       stack: ['React.js', 'Node.js', 'PostgreSQL', 'Supabase', 'Tailwind CSS'],
       image: clinicaImg,
       links: {
@@ -123,9 +124,9 @@ export const portfolio = {
     },
     {
       type: 'Portal Web',
-      title: 'Portal de Gestão Corporativa',
+      title: 'Portal de Recrutamento e Gestão Interna ',
       description:
-        'Plataforma corporativa com IA para automatizar processos de recrutamento e gestão interna. Criação e gestão de vagas com recolha estruturada de candidaturas. Sistema de scoring automático baseado em critérios de RH. Avaliação inteligente de candidatos com base em dados reais. Workflows automatizados para optimizar o processo de selecção. Resultado: redução significativa do tempo de recrutamento e decisões mais objectivas',
+        'Plataforma corporativa com IA para automatizar processos de recrutamento e gestão interna. Criação e gestão de vagas com recolha estruturada de candidaturas. Sistema de scoring automático baseado em critérios de RH. Avaliação inteligente de candidatos com base em dados reais. Workflows automatizados para optimizar o processo de seleção. Resultado: redução significativa do tempo de recrutamento e decisões mais objectivas',
       stack: ['React.js', 'Node.js', 'Supabase', 'n8n', 'LLMs para automação de scoring de candidatos'],
       image: portalImg,
       links: {
@@ -157,7 +158,12 @@ export const portfolio = {
       type: 'Plataforma de Mobilidade',
       title: 'EasyCar - Aplicação Mobile de Transporte',
       description:
-        'Aplicação mobile para transporte urbano com experiência em tempo real para passageiros e motoristas. Solicitação de corridas com geolocalização. Actualização de estado em tempo real. Histórico de viagens e notificações instantâneas. Integração com mapas para navegação. Resultado: experiência fluida e eficiente na gestão de transporte urbano',
+        `Aplicacao mobile para transporte urbano com experiencia em tempo real para passageiros e motoristas.
+Solicitacao de corridas com geolocalizacao
+Actualizacao de estado em tempo real
+Historico de viagens e notificacoes instantaneas
+Integracao com mapas para navegacao
+Resultado: experiencia fluida e eficiente na gestao de transporte urbano`,
       stack: ['React Native', 'Node.js', 'Google Maps API', 'Firebase', 'AsyncStorage'],
       image: easyCarImg,
       previewClassName: 'project-preview-handset',
@@ -171,7 +177,12 @@ export const portfolio = {
       type: 'Aplicação Mobile',
       title: 'Aplicativo - Geração de Dietas Personalizadas',
       description:
-        'Aplicação mobile que gera planos alimentares personalizados com suporte de inteligência artificial. Geração automática de dietas com base no perfil do utilizador. Integração com modelos de IA para recomendações inteligentes. Interface simples e orientada ao utilizador. Backend optimizado para processamento de dados personalizados. Resultado: recomendações alimentares mais precisas e adaptadas a cada utilizador',
+        `Aplicacao mobile que gera planos alimentares personalizados com suporte de inteligencia artificial.
+Geracao automatica de dietas com base no perfil do utilizador
+Integracao com modelos de IA para recomendacoes inteligentes
+Interface simples e orientada ao utilizador
+Backend optimizado para processamento de dados personalizados
+Resultado: recomendacoes alimentares mais precisas e adaptadas a cada utilizador`,
       stack: ['React Native', 'Node.js', 'OpenAI API'],
       image: aplicativoImg,
       previewClassName: 'project-preview-handset',

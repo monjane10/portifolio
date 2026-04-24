@@ -1218,9 +1218,14 @@
   opacity: 0.38;
 }
 
+.project-description-block {
+  display: grid;
+  gap: 8px;
+}
+
 .project-description {
   font-size: 0.95rem;
-  line-height: 1.72;
+  line-height: 1.68;
   color: var(--text-color);
 }
 

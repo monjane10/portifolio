@@ -114,16 +114,37 @@ function getProjectTheme(project) {
 
 function getProjectDetails(description = '') {
   const normalizedDescription = description
-    .replace(/\s+/g, ' ')
-    .replace(/\.([A-Z])/g, '. $1')
+    .replace(/\r\n/g, '\n')
     .trim()
 
   const [bodyText, resultText] = normalizedDescription.split(/Resultado:\s*/i)
+  const cleanBodyText = (bodyText ?? '')
+    .replace(/[ \t]+/g, ' ')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim()
 
   return {
-    bodyText: (bodyText ?? '').trim(),
+    bodyText: cleanBodyText,
     result: resultText?.trim() ?? '',
   }
+}
+
+function getDescriptionParagraphs(text = '') {
+  const normalizedText = text
+    .replace(/\r\n/g, '\n')
+    .replace(/[ \t]+/g, ' ')
+    .trim()
+
+  if (!normalizedText) {
+    return []
+  }
+
+  return normalizedText
+    .replace(/\.\s+/g, '.\n')
+    .split(/\n+/)
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .map((line) => (line.endsWith('.') ? line : `${line}.`))
 }
 
 export function ProjectCard({ project }) {
@@ -137,6 +158,7 @@ export function ProjectCard({ project }) {
   const imageStyle = project.imageStyle ?? {}
   const availableActions = projectActions.filter((action) => links[action.key])
   const { bodyText, result } = getProjectDetails(project.description)
+  const descriptionParagraphs = getDescriptionParagraphs(bodyText || project.description)
 
   return (
     <article className="project-card project-card-visual">
@@ -187,7 +209,11 @@ export function ProjectCard({ project }) {
           ) : null}
         </div>
 
-        <p className="project-description">{bodyText || project.description}</p>
+        <div className="project-description-block">
+          {descriptionParagraphs.map((paragraph, index) => (
+            <p className="project-description" key={`${project.title}-paragraph-${index}`}>{paragraph}</p>
+          ))}
+        </div>
 
         {result ? (
           <ul className="project-result-list">
