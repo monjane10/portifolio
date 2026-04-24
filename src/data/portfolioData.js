@@ -8,7 +8,7 @@ import aplicativoImg from '../assets/aplicativo.jpeg'
 
 export const portfolio = {
   shortName: 'LM.',
-  greeting: 'Ola, eu sou',
+  greeting: 'Olá, eu sou',
   name: 'Lourenço Monjane',
   role: 'Engenheiro de Software & IA Automation',
   summary:
@@ -110,7 +110,7 @@ export const portfolio = {
     },
     {
       title: 'Ferramentas',
-      items: ['Git', 'GitHub', 'n8n', 'postman', 'VS Code', 'IntelliJ IDEA', 'Swagger', 'ClickUp', 'Notion', 'Visual Studio', 'DevTools'],
+      items: ['Git', 'GitHub', 'n8n', 'Make', 'postman', 'VS Code', 'IntelliJ IDEA', 'Swagger', 'ClickUp', 'Notion', 'Visual Studio', 'DevTools'],
     },
   ],
 
@@ -150,7 +150,7 @@ export const portfolio = {
     },
     {
       type: 'Gestão de Vendas e Inventário',
-      title: 'StockAI - Sistema de Gestão de Vendas e Inventário',
+      title: 'SGI - Sistema de Gestão de Vendas e Inventário',
       description:
         'Aplicação full-stack para gestão de vendas e inventário com arquitetura baseada em eventos ao nível da base de dados. Implementa POS com registo de vendas e itens, controlo de inventário por mês, e sincronização automática de stock através de triggers PostgreSQL. Inclui geração dinâmica de SKU, snapshots de produto nas vendas, auditoria de operações e controlo de perfis com RLS.',
       highlight: 'Arquitetura orientada a eventos com triggers para consistência automática do stock.',

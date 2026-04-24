@@ -1,7 +1,7 @@
 const projectActions = [
   {
     key: 'live',
-    label: 'Abrir projeto',
+    label: 'Visualizar',
     icon: (
       <svg viewBox="0 0 24 24" focusable="false">
         <path
@@ -152,18 +152,19 @@ export function ProjectCard({ project }) {
             <div className="project-actions" aria-label={`Links do projeto ${project.title}`}>
               {availableActions.map((action) => {
                 const href = links[action.key]
+                const isLiveAction = action.key === 'live'
 
                 return (
                 <a
                   key={action.key}
-                  className="project-action"
+                  className={`project-action${isLiveAction ? ' project-action-visualizar' : ''}`}
                   href={href}
                   target="_blank"
                   rel="noreferrer"
                   aria-label={action.label}
                   title={action.label}
                 >
-                  {action.icon}
+                  {isLiveAction ? 'Visualizar' : action.icon}
                 </a>
                 )
               })}

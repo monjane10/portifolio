@@ -142,13 +142,6 @@ function App() {
                   </a>
                 </div>
 
-                <div className="hero-tags">
-                  {portfolio.heroTags.map((tag) => (
-                    <span className="hero-tag" key={tag}>
-                      {tag}
-                    </span>
-                  ))}
-                </div>
               </div>
             </div>
 

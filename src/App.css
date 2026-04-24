@@ -159,6 +159,7 @@
 .hero-copy-tail {
   display: grid;
   gap: 12px;
+  justify-items: start;
 }
 
 .hero-greeting {
@@ -264,6 +265,7 @@
   flex-wrap: wrap;
   gap: 8px;
   padding-top: 6px;
+  justify-content: flex-start;
 }
 
 .button {
@@ -493,7 +495,7 @@
     grid-template-columns: minmax(0, 540px) minmax(0, 540px);
     justify-content: space-between;
     gap: 44px;
-    align-items: start;
+    align-items: stretch;
   }
 
   .hero-copy {
@@ -506,7 +508,7 @@
   }
 
   .hero-copy-tail {
-    margin-top: 8px;
+    margin-top: auto;
   }
 
   .hero h1 {
@@ -545,16 +547,16 @@
     max-width: 540px;
     justify-self: end;
     align-self: start;
-    gap: 10px;
-    padding: 36px 28px 22px;
+    gap: 8px;
+    padding: 28px 24px 18px;
   }
 
   .hero-photo-frame {
-    width: min(100%, 392px);
+    width: min(100%, 352px);
   }
 
   .hero-photo-wrap {
-    width: min(100%, 372px);
+    width: min(100%, 332px);
   }
 
   .hero-panel-location,
@@ -1150,6 +1152,14 @@
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-color) 16%, transparent);
 }
 
+.project-action-visualizar {
+  width: auto;
+  padding: 0 12px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
 .project-action-disabled {
   opacity: 0.38;
 }
@@ -1529,6 +1539,18 @@
     font-size: 0.98rem;
   }
 
+  .experience-company {
+    order: 1;
+  }
+
+  .experience-role {
+    order: 2;
+  }
+
+  .experience-place {
+    order: 3;
+  }
+
   .skills-grid,
   .projects-grid {
     grid-template-columns: 1fr;
@@ -1539,7 +1561,7 @@
   }
 
   .project-card-heading {
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
   }
 
@@ -1548,8 +1570,8 @@
   }
 
   .skill-list-columns {
-    grid-template-columns: 1fr;
-    gap: 10px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
   }
 }
 
@@ -1562,7 +1584,13 @@
   .hero-actions,
   .hero-contact-links {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+  }
+
+  .hero-actions .button {
+    min-height: 34px;
+    padding: 0 10px;
+    font-size: 0.7rem;
   }
 
   .hero h1 {
@@ -1576,7 +1604,7 @@
   }
 
   .page-shell {
-    width: min(100%, calc(100% - 16px));
+    width: min(100%, calc(100% - 32px));
   }
 
   .topbar {
@@ -1628,6 +1656,12 @@
   .project-action {
     width: 32px;
     height: 32px;
+  }
+
+  .project-action-visualizar {
+    width: auto;
+    padding: 0 10px;
+    font-size: 0.74rem;
   }
 
   .contact-intro h3,

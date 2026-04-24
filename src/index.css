@@ -11,7 +11,7 @@
   --primary-color-hover: #214f9d;
   --primary-soft: rgba(41, 95, 189, 0.08);
   --border-color: rgba(15, 23, 42, 0.08);
-  --section-divider-color: rgba(15, 23, 42, 0.08);
+  --section-divider-color: rgba(15, 23, 42, 0.14);
   --soft-shadow: 0 1px 3px rgba(15, 23, 42, 0.012);
   font-family: 'Inter', 'Segoe UI', sans-serif;
   color: var(--text-color);
@@ -35,7 +35,7 @@
   --primary-color-hover: #2563eb;
   --primary-soft: rgba(59, 130, 246, 0.12);
   --border-color: rgba(148, 163, 184, 0.15);
-  --section-divider-color: rgba(148, 163, 184, 0.22);
+  --section-divider-color: rgba(148, 163, 184, 0.3);
   --soft-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
 
