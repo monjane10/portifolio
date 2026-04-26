@@ -375,6 +375,132 @@
   gap: 12px;
 }
 
+/* Courses section styles */
+.courses-section {
+  padding: 6px 0 28px;
+}
+.courses-grid {
+  display: grid;
+  grid-template-columns: 320px 24px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+.courses-list-wrap {
+  background: var(--surface-color);
+  border: 1px solid var(--section-divider-color);
+  border-radius: 8px;
+  padding: 8px 10px;
+  max-height: 520px;
+  overflow: hidden;
+}
+.courses-list {
+  list-style: none;
+  margin: 0;
+  padding: 6px;
+  overflow: auto;
+  max-height: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.course-item {
+  width: 100%;
+  text-align: left;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.course-item.active {
+  background: #eef4ff;
+  border-color: rgba(47, 102, 236, 0.16);
+  box-shadow: 0 6px 18px rgba(47, 102, 236, 0.06);
+}
+.course-item:hover {
+  transform: translateY(-1px);
+}
+.course-item-title {
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+.course-item-company {
+  font-size: 0.78rem;
+  color: var(--muted-color);
+}
+.course-details {
+  background: transparent;
+  padding: 6px 0 2px 0;
+}
+.course-details h3 {
+  margin: 0 0 6px 0;
+}
+.course-company {
+  margin: 4px 0 8px 0;
+  color: var(--muted-color);
+}
+.course-period {
+  color: var(--muted-color);
+  font-size: 0.85rem;
+  margin-bottom: 12px;
+}
+.course-description {
+  color: var(--text-color);
+  line-height: 1.6;
+}
+.course-certificate {
+  display: inline-block;
+  margin-top: 14px;
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+.courses-heading {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--muted-color);
+  margin: 6px 8px 10px 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.courses-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.divider-rail {
+  width: 6px;
+  height: 320px;
+  background: rgba(225,225,230,0.6);
+  border-radius: 6px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 8px;
+}
+.divider-thumb {
+  width: 6px;
+  height: 72px;
+  background: #0b1220;
+  border-radius: 6px;
+  box-shadow: 0 0 0 4px rgba(11,18,32,0.03) inset;
+}
+
+.course-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 860px) {
+  .courses-grid {
+    grid-template-columns: 1fr;
+  }
+  .courses-list-wrap {
+    max-height: none;
+  }
+}
+
 .hero-tag,
 .skill-tag,
 .project-tag {

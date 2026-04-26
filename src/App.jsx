@@ -5,6 +5,7 @@ import { TimelineList } from './components/TimelineList'
 import { SkillGroup } from './components/SkillGroup'
 import { ProjectCard } from './components/ProjectCard'
 import { ContactCard } from './components/ContactCard'
+import Courses from './components/Courses'
 import { portfolio } from './data/portfolioData'
 
 function App() {
@@ -89,6 +90,7 @@ function App() {
     { id: 'experiencia', label: 'Experi\u00eancia' },
     { id: 'projectos', label: 'Projectos' },
     { id: 'formacao', label: 'Forma\u00e7\u00e3o' },
+    { id: 'cursos', label: 'Cursos' },
     { id: 'skills', label: 'Skills' },
     { id: 'contactos', label: 'Contactos' },
   ]
@@ -337,6 +339,15 @@ function App() {
           minimal
         >
           <TimelineList items={portfolio.education} variant="education" />
+        </Section>
+
+        <Section
+          id="cursos"
+          eyebrow="Cursos"
+          split={false}
+          minimal
+        >
+          <Courses courses={portfolio.courses} />
         </Section>
 
         <Section

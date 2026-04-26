@@ -82,6 +82,44 @@ export const portfolio = {
     },
   ],
 
+  courses: [
+    {
+      period: '2025-12',
+      title: 'AI Agents Fundamentals',
+      company: 'Hugging Face',
+      location: '',
+      description: 'Curso sobre agentes de IA e fundamentos práticos. Certificado disponível.',
+    },
+    {
+      period: '2025-10',
+      title: 'Artificial Intelligence Fundamentals',
+      company: 'IBM',
+      location: '',
+      description: 'Fundamentos de IA com conceitos teóricos e práticos. Certificado disponível.',
+    },
+    {
+      period: '2024-12',
+      title: 'NLW Pocket: Mobile - React Native',
+      company: 'Rocketseat',
+      location: '',
+      description: 'Formação prática em React Native. Certificado disponível.',
+    },
+    {
+      period: '2024-11',
+      title: 'Curso Gratuito de Java - Java',
+      company: 'Rocketseat',
+      location: '',
+      description: 'Curso introdutório de Java. Certificado disponível.',
+    },
+    {
+      period: '2023-01',
+      title: 'Introduction to Front-end Development',
+      company: 'Coursera (Meta)',
+      location: '',
+      description: 'Introdução a HTML, CSS e JavaScript. Certificado disponível.',
+    },
+  ],
+
   skillGroups: [
     {
       title: 'Linguagens de Programação',
@@ -158,12 +196,12 @@ Notificações automáticas para reduzir faltas e melhorar a comunicação. Resu
       type: 'Plataforma de Mobilidade',
       title: 'EasyCar - Aplicação Mobile de Transporte',
       description:
-        `Aplicacao mobile para transporte urbano com experiencia em tempo real para passageiros e motoristas.
-Solicitacao de corridas com geolocalizacao
-Actualizacao de estado em tempo real
-Historico de viagens e notificacoes instantaneas
-Integracao com mapas para navegacao
-Resultado: experiencia fluida e eficiente na gestao de transporte urbano`,
+        `Aplicação mobile para transporte urbano com experiência em tempo real para passageiros e motoristas.
+Solicitação de corridas com geolocalização
+Atualização de estado em tempo real
+Histórico de viagens e notificações instantâneas
+Integração com mapas para navegação
+Resultado: experiência fluida e eficiente na gestão de transporte urbano`,
       stack: ['React Native', 'Node.js', 'Google Maps API', 'Firebase', 'AsyncStorage'],
       image: easyCarImg,
       previewClassName: 'project-preview-handset',
