@@ -494,6 +494,41 @@
   transition: top 0.2s ease;
 }
 
+[data-theme='dark'] .course-item {
+  color: #7ea0cf;
+}
+
+[data-theme='dark'] .course-item.active {
+  background: #273247;
+  color: #f8fbff;
+}
+
+[data-theme='dark'] .course-item:focus,
+[data-theme='dark'] .course-item:hover {
+  background: #121c31;
+  color: #d8e6ff;
+}
+
+[data-theme='dark'] .course-details h3 {
+  color: #f8fbff;
+}
+
+[data-theme='dark'] .course-company {
+  color: #8e9ab0;
+}
+
+[data-theme='dark'] .course-description {
+  color: #e6edf8;
+}
+
+[data-theme='dark'] .divider-rail {
+  background: #172139;
+}
+
+[data-theme='dark'] .divider-thumb {
+  background: #f4f7fb;
+}
+
 @media (max-width: 860px) {
   .courses-grid {
     grid-template-columns: 1fr;
