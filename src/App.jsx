@@ -343,7 +343,7 @@ function App() {
 
         <Section
           id="cursos"
-          eyebrow="Courses"
+          eyebrow="Cursos"
           split={false}
           minimal
         >

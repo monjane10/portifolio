@@ -153,7 +153,7 @@ export const portfolio = {
       title: 'Sistema de Gestão de Clínicas - Clínica dos Olhos Choupal',
       description:
         `Sistema web para gestão de clínicas que centraliza pacientes, consultas e histórico clínico numa única plataforma. Registo completo de pacientes e histórico médico estruturado. Marcação e acompanhamento de consultas. Emissão de receitas e registo de exames.
-Notificações automáticas para reduzir faltas e melhorar a comunicação. Resultado: maior organização, rastreabilidade e eficiência nos processos clínicos`,
+Notificações automáticas para reduzir faltas e melhorar a comunicação.`,
       stack: ['React.js', 'Node.js', 'PostgreSQL', 'Supabase', 'Tailwind CSS'],
       image: clinicaImg,
       links: {
@@ -164,7 +164,7 @@ Notificações automáticas para reduzir faltas e melhorar a comunicação. Resu
       type: 'Portal Web',
       title: 'Portal de Recrutamento e Gestão Interna ',
       description:
-        'Plataforma corporativa com IA para automatizar processos de recrutamento e gestão interna. Criação e gestão de vagas com recolha estruturada de candidaturas. Sistema de scoring automático baseado em critérios de RH. Avaliação inteligente de candidatos com base em dados reais. Workflows automatizados para optimizar o processo de seleção. Resultado: redução significativa do tempo de recrutamento e decisões mais objectivas',
+        'Plataforma corporativa com IA para automatizar processos de recrutamento e gestão interna. Criação e gestão de vagas com recolha estruturada de candidaturas. Sistema de scoring automático baseado em critérios de RH. Avaliação inteligente de candidatos com base em dados reais. Workflows automatizados para optimizar o processo de seleção. Integração com n8n para automação de tarefas administrativas.',
       stack: ['React.js', 'Node.js', 'Supabase', 'n8n', 'LLMs para automação de scoring de candidatos'],
       image: portalImg,
       links: {
@@ -175,7 +175,7 @@ Notificações automáticas para reduzir faltas e melhorar a comunicação. Resu
       type: 'Sistema de Rastreamento',
       title: 'Rastro - Sistema de Rastreabilidade Alimentar',
       description:
-        'Plataforma para verificação da autenticidade de produtos alimentares, focada em transparência e segurança do consumidor. Validação de produtos via QR Code. Consulta em tempo real de informações registadas. Sistema orientado à entidade reguladora para controlo sanitário. Comunicação em tempo real com WebSockets. Resultado: maior confiança do consumidor e melhor controlo de qualidade no mercado',
+        'Plataforma para verificação da autenticidade de produtos alimentares, focada em transparência e segurança do consumidor. Validação de produtos via QR Code. Consulta em tempo real de informações registadas. Sistema orientado à entidade reguladora para controlo sanitário. Comunicação em tempo real com WebSockets. Geração dinâmica de QR Codes para cada produto, garantindo rastreabilidade e autenticidade.',
       stack: ['React.js', 'Node.js', 'Supabase', 'WebSockets', 'QR Code Generation'],
       image: rastroImg,
       links: {
@@ -186,7 +186,7 @@ Notificações automáticas para reduzir faltas e melhorar a comunicação. Resu
       type: 'Gestão de Vendas e Inventário',
       title: 'SGI - Sistema de Gestão de Vendas e Inventário',
       description:
-        'Sistema full-stack para gestão de vendas e controlo de stock com arquitectura orientada a eventos. Registo de vendas (POS) com snapshot de produtos. Controlo de inventário com sincronização automática. Triggers no PostgreSQL para consistência de dados. Geração dinâmica de SKU e auditoria de operações. Controlo de acessos com Row Level Security (RLS). Resultado: gestão de stock mais precisa e redução de inconsistências operacionais',
+        'Sistema full-stack para gestão de vendas e controlo de stock com arquitectura orientada a eventos. Registo de vendas (POS) com snapshot de produtos. Controlo de inventário com sincronização automática. Triggers no PostgreSQL para consistência de dados. Geração dinâmica de SKU e auditoria de operações. Controlo de acessos com Row Level Security (RLS). ',
       stack: ['React.js', 'TypeScript', 'Supabase (PostgreSQL)', 'Netlify Functions'],
       image: sgiImg,
       links: {
@@ -200,8 +200,8 @@ Notificações automáticas para reduzir faltas e melhorar a comunicação. Resu
 Solicitação de corridas com geolocalização
 Atualização de estado em tempo real
 Histórico de viagens e notificações instantâneas
-Integração com mapas para navegação
-Resultado: experiência fluida e eficiente na gestão de transporte urbano`,
+Integração com mapas para navegação e rotas optimizadas
+Sistema de avaliação para motoristas e passageiros`,
       stack: ['React Native', 'Node.js', 'Google Maps API', 'Firebase', 'AsyncStorage'],
       image: easyCarImg,
       previewClassName: 'project-preview-handset',
@@ -220,7 +220,7 @@ Geração automática de dietas com base no perfil do utilizador
 Integração com modelos de IA para recomendações inteligentes
 Interface simples e orientada ao utilizador
 Backend optimizado para processamento de dados personalizados
-Resultado: recomendações alimentares mais precisas e adaptadas a cada utilizador`,
+Armazenamento local para acesso offline e sincronização eficiente`,
       stack: ['React Native', 'Node.js', 'OpenAI API'],
       image: aplicativoImg,
       previewClassName: 'project-preview-handset',
