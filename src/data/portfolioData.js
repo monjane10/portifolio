@@ -123,7 +123,7 @@ export const portfolio = {
   skillGroups: [
     {
       title: 'Linguagens de Programação',
-      items: ['Java', 'JavaScript', 'React.js', 'Spring Boot', 'Python', 'C#'],
+      items: ['Java', 'JavaScript', 'TypeScript', 'Spring Boot', 'Python', 'C#'],
     },
     {
       title: 'Automação e Integração',
