@@ -10,9 +10,9 @@ export const portfolio = {
   shortName: 'LM.',
   greeting: 'Olá, eu sou',
   name: 'Lourenço Monjane',
-  role: 'Engenheiro de Software & IA Automation',
+  role: 'Desenvolvedor de Software',
   summary:
-    'Sou engenheiro de software com foco em desenvolvimento fullstack e automação com IA. Actuo na criação de sistemas web e aplicações inteligentes que optimizam processos, reduzem esforço manual e melhoram a tomada de decisão. Tenho experiência no desenvolvimento de plataformas completas, desde a arquitectura backend até interfaces modernas, integrando APIs, bases de dados e workflows automatizados. O meu foco é simples: transformar problemas reais em soluções digitais eficientes e escaláveis.',
+    'Estudante finalista do curso de Desenvolvimento de Software, com foco em desenvolvimento fullstack e automação com IA. Actuo na criação de sistemas web e aplicações inteligentes que optimizam processos, reduzem esforço manual e melhoram a tomada de decisão. Tenho experiência no desenvolvimento de plataformas completas, desde a arquitectura backend até interfaces modernas, integrando APIs, bases de dados e workflows automatizados. O meu foco é simples: transformar problemas reais em soluções digitais eficientes e escaláveis.',
   availability: 'Disponível para crescer a nível profissional e pessoal em software, automação e IA aplicada.',
   email: 'lourencomonjane2@gmail.com',
   photo: profileImage,
@@ -49,18 +49,6 @@ export const portfolio = {
   ],
 
   experience: [
-    {
-      period: 'Out, 2025 - Actual',
-      title: 'Engenheiro de Software & IA Automation',
-      company: 'Raggio AI',
-      location: 'Remoto, Portugal',
-    },
-    {
-      period: 'Abr, 2026 - Actual',
-      title: 'Facilitador de Literancia Digital',
-      company: 'LIDI Consultoria',
-      location: 'Remoto, Moçambique',
-    },
      {
       period: 'Jul, 2025 - Out, 2025',
       title: 'Técnico de Informática (Estágio)',
@@ -187,7 +175,7 @@ Notificações automáticas para reduzir faltas e melhorar a comunicação.`,
       type: 'Sistema de Rastreamento',
       title: 'Rastro - Sistema de Rastreabilidade Alimentar',
       description:
-        'Plataforma para verificação da autenticidade de produtos alimentares, focada em transparência e segurança do consumidor. Validação de produtos via QR Code. Consulta em tempo real de informações registadas. Sistema orientado à entidade reguladora para controlo sanitário. Comunicação em tempo real com WebSockets. Geração dinâmica de QR Codes para cada produto, garantindo rastreabilidade e autenticidade.',
+        'Plataforma para verificação da autenticidade de produtos alimentares, focada em transparência e segurança do consumidor. Validação de produtos via QR Code. Consulta em tempo real de informações registadas. Comunicação em tempo real com WebSockets. Geração dinâmica de QR Codes para cada produto, garantindo rastreabilidade e autenticidade.',
       stack: ['React.js', 'Node.js', 'Supabase', 'WebSockets', 'QR Code Generation'],
       image: rastroImg,
       links: {
