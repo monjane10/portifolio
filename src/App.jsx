@@ -1,390 +1,196 @@
 import './App.css'
-import { useState, useEffect, useRef } from 'react'
+import { useEffect, useState } from 'react'
 import { Section } from './components/Section'
 import { TimelineList } from './components/TimelineList'
 import { SkillGroup } from './components/SkillGroup'
-import { ProjectCard } from './components/ProjectCard'
-import { ContactCard } from './components/ContactCard'
+import { FeaturedProject } from './components/FeaturedProject'
+import { ProjectList } from './components/ProjectList'
 import Courses from './components/Courses'
 import { portfolio } from './data/portfolioData'
 
+function getInitialTheme() {
+  return localStorage.getItem('theme') === 'dark' ? 'dark' : 'light'
+}
+
+const featuredProjects = portfolio.projects.filter((project) => project.featured)
+const otherProjects = portfolio.projects.filter((project) => !project.featured)
+
 function App() {
-  const [isDark, setIsDark] = useState(() => {
-    const saved = localStorage.getItem('theme')
-    return saved ? saved === 'dark' : false
-  })
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState('')
-  const [typedGreeting, setTypedGreeting] = useState('')
-  const [isGreetingComplete, setIsGreetingComplete] = useState(false)
-  const menuRef = useRef(null)
+  const [theme, setTheme] = useState(getInitialTheme)
 
   useEffect(() => {
-    const theme = isDark ? 'dark' : 'light'
-    localStorage.setItem('theme', theme)
     document.documentElement.setAttribute('data-theme', theme)
-  }, [isDark])
+    localStorage.setItem('theme', theme)
+  }, [theme])
 
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  // Faz aparecer suavemente os elementos marcados com data-reveal quando entram no ecrã
   useEffect(() => {
-    if (!isMenuOpen) {
+    const elements = document.querySelectorAll('[data-reveal]')
+    if (!('IntersectionObserver' in window)) {
+      elements.forEach((el) => el.classList.add('is-visible'))
       return undefined
     }
-
-    const previousOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-
-    const firstLink = menuRef.current?.querySelector('a')
-    firstLink?.focus()
-
-    const handleEscape = (event) => {
-      if (event.key === 'Escape') {
-        setIsMenuOpen(false)
-      }
-    }
-
-    document.addEventListener('keydown', handleEscape)
-
-    return () => {
-      document.body.style.overflow = previousOverflow
-      document.removeEventListener('keydown', handleEscape)
-    }
-  }, [isMenuOpen])
-
-  useEffect(() => {
-    const fullGreeting = portfolio.greeting
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-
-    if (prefersReducedMotion) {
-      setTypedGreeting(fullGreeting)
-      setIsGreetingComplete(true)
-      return undefined
-    }
-
-    setTypedGreeting('')
-    setIsGreetingComplete(false)
-
-    let index = 0
-    let timeoutId
-
-    const typeNextCharacter = () => {
-      index += 1
-      setTypedGreeting(fullGreeting.slice(0, index))
-
-      if (index < fullGreeting.length) {
-        timeoutId = window.setTimeout(typeNextCharacter, 70)
-      } else {
-        setIsGreetingComplete(true)
-      }
-    }
-
-    timeoutId = window.setTimeout(typeNextCharacter, 120)
-
-    return () => {
-      window.clearTimeout(timeoutId)
-    }
-  }, [])
-
-  const [firstName, ...remainingNames] = portfolio.name.split(' ')
-  const lastName = remainingNames.join(' ')
-  const navItems = [
-    { id: 'experiencia', label: 'Experi\u00eancia' },
-    { id: 'projectos', label: 'Projectos' },
-    { id: 'formacao', label: 'Forma\u00e7\u00e3o' },
-    { id: 'cursos', label: 'Cursos' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'contactos', label: 'Contactos' },
-  ]
-  useEffect(() => {
-    const heroSection = document.getElementById('hero')
-    const sections = navItems
-      .map((item) => document.getElementById(item.id))
-      .filter(Boolean)
-
-    if (!sections.length || !heroSection) {
-      return undefined
-    }
-
-    const entryById = new Map()
-
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          entryById.set(entry.target.id, entry)
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible')
+            observer.unobserve(entry.target)
+          }
         })
-
-        const heroEntry = entryById.get('hero')
-        if (heroEntry?.isIntersecting && heroEntry.intersectionRatio >= 0.35) {
-          setActiveSection('')
-          return
-        }
-
-        const visibleEntries = sections
-          .map((section) => entryById.get(section.id))
-          .filter(Boolean)
-          .filter((entry) => entry.isIntersecting)
-          .sort((entryA, entryB) => entryB.intersectionRatio - entryA.intersectionRatio)
-
-        if (visibleEntries.length) {
-          setActiveSection(visibleEntries[0].target.id)
-        }
       },
-      {
-        root: null,
-        rootMargin: '-40% 0px -50% 0px',
-        threshold: [0.15, 0.35, 0.6, 0.85],
-      },
+      { rootMargin: '0px 0px -10% 0px' },
     )
-
-    observer.observe(heroSection)
-    sections.forEach((section) => observer.observe(section))
-
-    return () => {
-      observer.disconnect()
-    }
+    elements.forEach((el) => observer.observe(el))
+    return () => observer.disconnect()
   }, [])
 
+  useEffect(() => {
+    if (!menuOpen) return undefined
+    const close = () => setMenuOpen(false)
+    const onKey = (event) => {
+      if (event.key === 'Escape') close()
+    }
+    const desktop = window.matchMedia('(min-width: 641px)')
+    window.addEventListener('keydown', onKey)
+    desktop.addEventListener('change', close)
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      desktop.removeEventListener('change', close)
+    }
+  }, [menuOpen])
+
+  const toggleTheme = () => setTheme((current) => (current === 'dark' ? 'light' : 'dark'))
+
   return (
-    <div className={`page-shell${isMenuOpen ? ' menu-open' : ''}`}>
+    <div className="page">
       <header className="topbar">
-        <a className="brand" href="#hero">
-          {portfolio.shortName}
+        <a className="brand" href="#top" aria-label={portfolio.name}>
+          <img className="brand-photo" src={portfolio.photo} alt="" />
+          <span>LM</span>
         </a>
-
         <div className="topbar-actions">
-          <button
-            className="nav-toggle"
-            type="button"
-            aria-expanded={isMenuOpen}
-            aria-controls="site-navigation"
-            aria-label={isMenuOpen ? 'Fechar menu' : 'Abrir menu'}
-            onClick={() => setIsMenuOpen((current) => !current)}
+          <nav
+            id="menu-principal"
+            className={`nav${menuOpen ? ' nav-open' : ''}`}
+            aria-label="Menu principal"
+            onClick={(event) => {
+              if (event.target.closest('a')) setMenuOpen(false)
+            }}
           >
-            <span />
-            <span />
-            <span />
+            <a href="#projectos">Projectos</a>
+            <a href="#percurso">Percurso</a>
+            <a href="#contacto">Contacto</a>
+          </nav>
+          <button
+            className="icon-button"
+            type="button"
+            onClick={toggleTheme}
+            aria-label={theme === 'dark' ? 'Mudar para tema claro' : 'Mudar para tema escuro'}
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" strokeWidth="1.6" />
+              <path d="M12 4a8 8 0 0 1 0 16Z" fill="currentColor" />
+            </svg>
           </button>
-
-          <button className="theme-toggle" onClick={() => setIsDark(!isDark)} title="Alternar tema">
-            {isDark ? (
-              <svg viewBox="0 0 24 24" focusable="false">
-                <circle cx="12" cy="12" r="5" fill="currentColor" />
-                <path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-              </svg>
-            ) : (
-              <svg viewBox="0 0 24 24" focusable="false">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" fill="currentColor" />
-              </svg>
-            )}
+          <button
+            className="icon-button menu-toggle"
+            type="button"
+            onClick={() => setMenuOpen((open) => !open)}
+            aria-expanded={menuOpen}
+            aria-controls="menu-principal"
+            aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              {menuOpen ? (
+                <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+              ) : (
+                <path d="M4 8h16M4 16h16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+              )}
+            </svg>
           </button>
         </div>
-
-        <nav
-          ref={menuRef}
-          className={`nav${isMenuOpen ? ' nav-open' : ''}`}
-          id="site-navigation"
-          aria-label="Menu principal"
-        >
-          <button
-            className="nav-close"
-            type="button"
-            aria-label="Fechar menu"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            <span />
-            <span />
-          </button>
-                    {navItems.map((item) => (
-            <a
-              key={item.id}
-              href={`#${item.id}`}
-              className={activeSection === item.id ? 'nav-link-active' : ''}
-              onClick={() => {
-                setActiveSection(item.id)
-                setIsMenuOpen(false)
-              }}
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
       </header>
 
-      {isMenuOpen ? <button className="nav-backdrop" type="button" aria-label="Fechar menu" onClick={() => setIsMenuOpen(false)} /> : null}
-
-      <main>
-        <section className="hero" id="hero">
-          <div className="hero-grid">
-            <div className="hero-copy">
-              <div className="hero-copy-intro">
-                <p className="hero-greeting" aria-label={portfolio.greeting}>
-                  <span className={`typewriter-text${isGreetingComplete ? ' typewriter-complete' : ''}`}>
-                    {typedGreeting}
-                  </span>
-                </p>
-                <h1>
-                  <span className="hero-name-line hero-name-line-primary">{firstName}</span>
-                  {lastName ? <span className="hero-name-line hero-name-line-secondary">{lastName}</span> : null}
-                </h1>
-                <p className="hero-role">{portfolio.role}</p>
-                <p className="hero-summary">{portfolio.summary}</p>
-              </div>
-
-              <div className="hero-copy-tail">
-                <div className="hero-actions">
-                  <a className="button button-primary" href={`mailto:${portfolio.email}`}>
-                    <span className="button-icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" focusable="false">
-                        <path
-                          d="M21 4L10 15"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                        />
-                        <path
-                          d="M21 4L14 20L10 15L5 11L21 4Z"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                        />
-                      </svg>
-                    </span>
-                    Falar comigo
-                  </a>
-                  <a className="button button-secondary" href="#projectos">
-                    <span className="button-icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" focusable="false">
-                        <path
-                          d="M3 7.5C3 6.67 3.67 6 4.5 6H19.5C20.33 6 21 6.67 21 7.5V18C21 18.83 20.33 19.5 19.5 19.5H4.5C3.67 19.5 3 18.83 3 18V7.5Z"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                        />
-                        <path
-                          d="M8 6V4.5C8 3.67 8.67 3 9.5 3H14.5C15.33 3 16 3.67 16 4.5V6"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                        />
-                      </svg>
-                    </span>
-                    Ver soluções que já construí
-                  </a>
-                </div>
-
-              </div>
-            </div>
-
-            <aside className="hero-panel">
-              <div className="hero-panel-glow hero-panel-glow-left" aria-hidden="true" />
-              <div className="hero-panel-glow hero-panel-glow-right" aria-hidden="true" />
-              <div className="hero-panel-dots" aria-hidden="true" />
-              <div className="hero-photo-frame">
-                <div className="hero-photo-wrap">
-                  <img
-                    className="hero-photo"
-                    src={portfolio.photo}
-                    alt={`Foto de perfil de ${portfolio.name}`}
-                  />
-                </div>
-              </div>
-
-              <div className="hero-panel-location">
-                <span className="location-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" focusable="false">
-                    <path
-                      d="M12 21C15.5 16.8 18 13.9 18 10.5C18 6.91 15.31 4 12 4C8.69 4 6 6.91 6 10.5C6 13.9 8.5 16.8 12 21Z"
-                      fill="currentColor"
-                    />
-                    <circle cx="12" cy="10.5" r="2.2" fill="#ffffff" />
-                  </svg>
-                </span>
-                <strong>{portfolio.location}</strong>
-              </div>
-            </aside>
+      <main id="top">
+        <section className="hero">
+          <h1>{portfolio.name}</h1>
+          <p className="hero-role">
+            {portfolio.role} <span className="hero-sep">·</span> {portfolio.location}
+          </p>
+          <p className="hero-summary">{portfolio.summary}</p>
+          <div className="hero-links">
+            <a className="hero-email" href={`mailto:${portfolio.email}`}>
+              {portfolio.email}
+            </a>
+            {portfolio.links.map((link) => (
+              <a key={link.label} href={link.href} target="_blank" rel="noreferrer">
+                {link.label}
+              </a>
+            ))}
           </div>
         </section>
 
-        <Section
-          id="experiencia"
-          split={false}
-          minimal
-        >
-          <TimelineList items={portfolio.experience} variant="editorial" />
-        </Section>
-
-        <Section
-          id="projectos"
-          eyebrow="Projectos"
-          split={false}
-          minimal
-        >
-          <div className="projects-grid">
-            {portfolio.projects.map((project) => (
-              <ProjectCard key={project.title} project={project} />
+        <Section id="projectos" title="Projectos" wide>
+          <div className="features">
+            {featuredProjects.map((project, index) => (
+              <FeaturedProject key={project.title} project={project} reverse={index % 2 === 1} />
             ))}
           </div>
+
+          {otherProjects.length ? (
+            <div className="more-projects">
+              <h3 className="more-projects-title">Outros projectos</h3>
+              <ProjectList projects={otherProjects} />
+            </div>
+          ) : null}
         </Section>
 
-        <Section
-          id="formacao"
-          split={false}
-          minimal
-        >
-          <TimelineList items={portfolio.education} variant="education" />
+        <Section id="percurso" title="Experiência">
+          <TimelineList items={portfolio.experience} />
         </Section>
 
-        <Section
-          id="cursos"
-          eyebrow="Cursos"
-          split={false}
-          minimal
-        >
+        <Section title="Formação">
+          <TimelineList items={portfolio.education} />
+        </Section>
+
+        <Section title="Cursos">
           <Courses courses={portfolio.courses} />
         </Section>
 
-        <Section
-          id="skills"
-          eyebrow="Habilidades"
-          split={false}
-          minimal
-        >
-          <div className="skills-grid">
-            {portfolio.skillGroups.map((group) => (
+        <Section title="Competências">
+          <ul className="rows">
+            {portfolio.skills.map((group) => (
               <SkillGroup key={group.title} {...group} />
             ))}
-          </div>
+          </ul>
         </Section>
 
-        <Section
-          id="contactos"
-          eyebrow="Contacto"
-          split={false}
-          minimal
-        >
-          <div className="contact-section contact-section-inspired">
-            <div className="contact-links-list contact-links-list-compact">
-              {portfolio.contactLinks.map((contact) => (
-                <ContactCard key={contact.label} contact={contact} />
-              ))}
-            </div>
-          </div>
+        <Section id="contacto" title="Contacto">
+          <p className="contact-text">
+            Estou aberto a novos projectos e oportunidades. Se tiver uma ideia ou uma proposta em mente,
+            envie-me um email.
+          </p>
+          <a className="contact-email" href={`mailto:${portfolio.email}`}>
+            {portfolio.email}
+          </a>
         </Section>
       </main>
 
-      <footer className="site-footer">
-        <p>&copy; {new Date().getFullYear()} {portfolio.name}. Todos os direitos reservados.</p>
+      <footer className="footer">
+        <span>© {new Date().getFullYear()} {portfolio.name}</span>
+        <div className="footer-links">
+          {portfolio.links.map((link) => (
+            <a key={link.label} href={link.href} target="_blank" rel="noreferrer">
+              {link.label}
+            </a>
+          ))}
+        </div>
       </footer>
     </div>
   )
 }
 
 export default App
-

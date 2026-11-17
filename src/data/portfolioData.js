@@ -1,252 +1,135 @@
-﻿import profileImage from '../assets/profile.jpeg'
-import clinicaImg from '../assets/clinica.png'
-import portalImg from '../assets/portal.png'
-import rastroImg from '../assets/rastro.png'
-import sgiImg from '../assets/SGI.png'
-import easyCarImg from '../assets/easy car.jpeg'
-import aplicativoImg from '../assets/aplicativo.jpeg'
+﻿import profileImage from '../assets/profile-avatar.jpg'
+import clinicaImg from '../assets/clinica-crop.png'
+import rastroImg from '../assets/rastro-crop.png'
+import sgiImg from '../assets/SGI2.png'
+import carteiraImg from '../assets/carteira-crop.png'
+import tivacvImg from '../assets/tivacv-crop.png'
+import procurementImg from '../assets/inovafem-crop.png'
 
 export const portfolio = {
-  shortName: 'LM.',
-  greeting: 'Olá, eu sou',
   name: 'Lourenço Monjane',
   role: 'Desenvolvedor de Software',
-  summary:
-    'Estudante finalista do curso de Desenvolvimento de Software, com foco em desenvolvimento fullstack e automação com IA. Actuo na criação de sistemas web e aplicações inteligentes que optimizam processos, reduzem esforço manual e melhoram a tomada de decisão. Tenho experiência no desenvolvimento de plataformas completas, desde a arquitectura backend até interfaces modernas, integrando APIs, bases de dados e workflows automatizados. O meu foco é simples: transformar problemas reais em soluções digitais eficientes e escaláveis.',
-  availability: 'Disponível para crescer a nível profissional e pessoal em software, automação e IA aplicada.',
-  email: 'lourencomonjane2@gmail.com',
-  photo: profileImage,
   location: 'Maputo, Moçambique',
+  photo: profileImage,
+  email: 'lourencomonjane2@gmail.com',
+  summary:
+    'Desenvolvedor de software especializado em aplicações web e mobile com React, Next.js e React Native. Com experiência também em backend, acompanho cada projecto da concepção à entrega, com foco na qualidade, no desempenho e na experiência do utilizador.',
 
-
-  contactLinks: [
-    {
-      label: 'Email',
-      value: 'Enviar mensagem',
-      href: 'mailto:lourencomonjane2@gmail.com',
-    },
-    {
-      label: 'LinkedIn',
-      value: 'Ver perfil',
-      href: 'https://www.linkedin.com/in/lourencomonjane',
-    },
-    {
-      label: 'GitHub',
-      value: 'Explorar codigo',
-      href: 'https://github.com/monjane10',
-    },
-    {
-      label: 'WhatsApp',
-      value: 'Conversar no WhatsApp',
-      href: 'https://wa.me/258850741012',
-    },
+  links: [
+    { label: 'GitHub', href: 'https://github.com/monjane10' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/lourencomonjane' },
+    { label: 'WhatsApp', href: 'https://wa.me/258850741012' },
   ],
 
-  stats: [
-    { value: 'Fullstack', label: 'desenvolvimento de software' },
-    { value: 'IA Automation', label: 'integracoes e IA aplicada' },
-    { value: 'Criatividade', label: 'solucoes com impacto real' },
+  projects: [
+    {
+      title: 'Supplyflow',
+      year: '2026',
+      featured: true,
+      tags: ['Web', 'IA'],
+      type: 'Compras e logística',
+      description:
+        'Gere as compras de uma empresa que concorre a concursos: cotações, comparação de fornecedores, propostas e entregas. A IA lê os documentos e redige as propostas.',
+      stack: ['React', 'TanStack Start', 'TypeScript', 'Supabase', 'Netlify Functions', 'n8n', 'OCR'],
+      image: procurementImg,
+      links: { live: 'https://inovafem.netlify.app/' },
+    },
+    {
+      title: 'TivaCV',
+      year: '2026',
+      featured: true,
+      tags: ['Web', 'IA', 'Pagamentos móveis'],
+      type: 'Criação de currículos',
+      description:
+        'Cria um currículo profissional no telemóvel em poucos minutos, com sugestões de texto e tradução para inglês por IA. O PDF paga-se no fim, por M-Pesa ou e-Mola.',
+      stack: ['React', 'Vite', 'JavaScript', 'CSS', 'Node.js', 'Netlify Functions', 'Netlify Blobs', 'Puppeteer', 'Claude API', 'Zod', 'M-Pesa API'],
+      image: tivacvImg,
+      links: { live: 'https://tivacv.netlify.app/' },
+    },
+    {
+      title: 'Carteira MZ',
+      year: '2026',
+      featured: true,
+      tags: ['PWA', 'Mobile'],
+      type: 'Finanças pessoais',
+      description:
+        'PWA de finanças pessoais: regista receitas, despesas e empréstimos, define orçamentos e metas, e mostra num dashboard os gastos do mês.',
+      stack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Supabase', 'Zustand', 'Zod', 'PWA'],
+      image: carteiraImg,
+      mobile: true,
+      links: { live: 'https://carteira-mz.vercel.app/login' },
+    },
+    {
+      title: 'Clínica dos Olhos Choupal',
+      year: '2026',
+      type: 'Sistema web',
+      description:
+        'Gestão de uma clínica oftalmológica: pacientes, consultas, receitas e exames numa só plataforma, com lembretes automáticos para reduzir faltas.',
+      stack: ['React', 'Node.js', 'PostgreSQL', 'Supabase', 'Tailwind'],
+      image: clinicaImg,
+      links: { live: 'https://clinica-olhos-choupal.netlify.app/' },
+    },
+    {
+      title: 'Rastro',
+      year: '2025',
+      type: 'Plataforma web',
+      description:
+        'Verifica a origem de produtos alimentares. Cada produto tem um QR Code que mostra os dados registados em tempo real.',
+      stack: ['React', 'Node.js', 'Supabase', 'WebSockets'],
+      image: rastroImg,
+      links: { live: 'https://rastro-rose.vercel.app/' },
+    },
+    {
+      title: 'SGI',
+      year: '2025',
+      type: 'Vendas e inventário',
+      description:
+        'Ponto de venda com controlo de stock. O inventário actualiza-se a cada venda, com auditoria das operações e permissões por utilizador.',
+      stack: ['React', 'TypeScript', 'Supabase', 'Netlify Functions'],
+      image: sgiImg,
+      links: { live: 'https://stockai-dev.netlify.app/' },
+    },
   ],
 
   experience: [
-     {
-      period: 'Jul, 2025 - Out, 2025',
-      title: 'Técnico de Informática (Estágio)',
-      company: 'Instituto Nacional de Turismo - INATUR',
-      location: 'Maputo, Moçambique',
+    {
+      period: 'Out 2025 – actualmente',
+      title: 'Desenvolvedor de Software',
+      company: 'Raggio AI',
     },
     {
-      period: 'Ago, 2024 - Jul, 2025',
-      title: 'Desenvolvedor Fullstack',
+      period: 'Ago 2024 – Jul 2025',
+      title: 'Desenvolvedor Frontend',
       company: 'AjpTech',
-      location: 'Maputo, Moçambique',
     },
   ],
 
   education: [
     {
-      period: '2022 - 2026',
+      period: '2022 – 2026',
       title: 'Licenciatura em Desenvolvimento de Software',
-      company: 'Universidade São Tomas de Moçambique - USTM',
-      location: 'Maputo, Moçambique',
-      description:
-        'Formação superior centrada em desenvolvimento de software, pensamento lógico, construção de sistemas e preparação para desafios reais do mercado.',
+      company: 'Universidade São Tomás de Moçambique',
+      initials: 'USTM',
     },
     {
-      period: '2020 - 2021',
+      period: '2020 – 2021',
       title: 'Ensino Médio',
       company: 'Escola Secundária da Munhuana',
-      location: 'Maputo, Moçambique',
-      description:
-        'Base acadêmica que reforçou disciplina, curiosidade e preparação para a transição para a área de tecnologia.',
     },
   ],
 
   courses: [
-    {
-      period: '2025-12',
-      title: 'AI Agents Fundamentals',
-      company: 'Hugging Face',
-      location: '',
-      description: 'Formação focada em agentes de IA, com base sólida em arquitetura, tomada de decisão e aplicações práticas para automação de tarefas inteligentes.',
-    },
-    {
-      period: '2025-10',
-      title: 'Artificial Intelligence Fundamentals',
-      company: 'IBM',
-      location: '',
-      description: 'Curso orientado aos fundamentos da inteligência artificial, cobrindo conceitos essenciais, lógica aplicada e o impacto da IA em soluções reais de negócio.',
-    },
-    {
-      period: '2024-12',
-      title: 'NLW Pocket: Mobile - React Native',
-      company: 'Rocketseat',
-      location: '',
-      description: 'Experiência prática no desenvolvimento mobile com React Native, com foco em interfaces modernas, componentização e construção ágil de aplicações multiplataforma.',
-    },
-    {
-      period: '2024-11',
-      title: 'Curso Gratuito de Java - Java',
-      company: 'Rocketseat',
-      location: '',
-      description: 'Base estruturada em Java, reforçando lógica de programação, sintaxe da linguagem e boas práticas para desenvolvimento backend consistente e escalável.',
-    },
-    {
-      period: '2023-01',
-      title: 'Introduction to Front-end Development',
-      company: 'Coursera (Meta)',
-      location: '',
-      description: 'Introdução estratégica ao desenvolvimento front-end, com fundamentos de HTML, CSS e JavaScript voltados para criação de interfaces responsivas e bem estruturadas.',
-    },
+    { period: 'Dez 2025', title: 'AI Agents Fundamentals', company: 'Hugging Face' },
+    { period: 'Out 2025', title: 'Artificial Intelligence Fundamentals', company: 'IBM' },
+    { period: 'Dez 2024', title: 'NLW Pocket: Mobile com React Native', company: 'Rocketseat' },
+    { period: 'Nov 2024', title: 'Java', company: 'Rocketseat' },
+    { period: 'Jan 2023', title: 'Introduction to Front-end Development', company: 'Meta, via Coursera' },
   ],
 
-  skillGroups: [
-    {
-      title: 'Linguagens de Programação',
-      items: ['Java', 'JavaScript', 'TypeScript','Python', 'C#'],
-    },
-    {
-      title: 'Automação e Integração',
-      items: ['LLMs', 'RAG', 'Chatbots', 'Integração de sistemas', 'APIs Restful', 'Automação de processos'],
-    },
-    {
-      title: 'Bases de Dados',
-      items: ['PostgreSQL', 'MySQL', 'SQL Server', 'MongoDB', 'Supabase', 'Firebase'],
-    },
-    {
-      title: 'Backend',
-      items: ['Spring Boot', 'Node.js', 'Express.js', 'Django', 'Netlify Functions'],
-    },
-    {
-      title: 'Frontend',
-      items: ['React.js', 'React Native', 'Tailwind CSS', 'chart.js', 'Material UI'],
-    },
-    {
-      title: 'Ferramentas',
-      items: ['Git', 'GitHub', 'n8n', 'Make', 'postman', 'VS Code', 'IntelliJ IDEA', 'Swagger', 'ClickUp', 'Notion', 'Visual Studio', 'DevTools'],
-    },
-  ],
-
-  projects: [
-    {
-      type: 'Sistema Web',
-      title: 'Sistema de Gestão de Clínicas - Clínica dos Olhos Choupal',
-      description:
-        `Sistema web para gestão de clínicas que centraliza pacientes, consultas e histórico clínico numa única plataforma. Registo completo de pacientes e histórico médico estruturado. Marcação e acompanhamento de consultas. Emissão de receitas e registo de exames.
-Notificações automáticas para reduzir faltas e melhorar a comunicação.`,
-      stack: ['React.js', 'Node.js', 'PostgreSQL', 'Supabase', 'Tailwind CSS'],
-      image: clinicaImg,
-      links: {
-        live: 'https://clinica-olhos-choupal.netlify.app/',
-      },
-    },
-    {
-      type: 'Portal Web',
-      title: 'Portal de Recrutamento e Gestão Interna ',
-      description:
-        'Plataforma corporativa com IA para automatizar processos de recrutamento e gestão interna. Criação e gestão de vagas com recolha estruturada de candidaturas. Sistema de scoring automático baseado em critérios de RH. Avaliação inteligente de candidatos com base em dados reais. Workflows automatizados para optimizar o processo de seleção. Integração com n8n para automação de tarefas administrativas.',
-      stack: ['React.js', 'Node.js', 'Supabase', 'n8n', 'LLMs para automação de scoring de candidatos'],
-      image: portalImg,
-      links: {
-        live: 'https://carreiras.raggioai.com/',
-      },
-    },
-    {
-      type: 'Sistema de Rastreamento',
-      title: 'Rastro - Sistema de Rastreabilidade Alimentar',
-      description:
-        'Plataforma para verificação da autenticidade de produtos alimentares, focada em transparência e segurança do consumidor. Validação de produtos via QR Code. Consulta em tempo real de informações registadas. Comunicação em tempo real com WebSockets. Geração dinâmica de QR Codes para cada produto, garantindo rastreabilidade e autenticidade.',
-      stack: ['React.js', 'Node.js', 'Supabase', 'WebSockets', 'QR Code Generation'],
-      image: rastroImg,
-      links: {
-        live: 'https://rastro-rose.vercel.app/',
-      },
-    },
-    {
-      type: 'Gestão de Vendas e Inventário',
-      title: 'SGI - Sistema de Gestão de Vendas e Inventário',
-      description:
-        'Sistema full-stack para gestão de vendas e controlo de stock com arquitectura orientada a eventos. Registo de vendas (POS) com snapshot de produtos. Controlo de inventário com sincronização automática. Triggers no PostgreSQL para consistência de dados. Geração dinâmica de SKU e auditoria de operações. Controlo de acessos com Row Level Security (RLS). ',
-      stack: ['React.js', 'TypeScript', 'Supabase (PostgreSQL)', 'Netlify Functions'],
-      image: sgiImg,
-      links: {
-        live: 'https://stockai-dev.netlify.app/',
-      },
-    }, {
-      type: 'Plataforma de Mobilidade',
-      title: 'EasyCar - Aplicação Mobile de Transporte',
-      description:
-        `Aplicação mobile para transporte urbano com experiência em tempo real para passageiros e motoristas.
-Solicitação de corridas com geolocalização
-Atualização de estado em tempo real
-Histórico de viagens e notificações instantâneas
-Integração com mapas para navegação e rotas optimizadas
-Sistema de avaliação para motoristas e passageiros`,
-      stack: ['React Native', 'Node.js', 'Google Maps API', 'Firebase', 'AsyncStorage'],
-      image: easyCarImg,
-      previewClassName: 'project-preview-handset',
-      imageClassName: 'project-preview-image-handset',
-      imageStyle: { '--project-image-scale': 1.16 },
-      links: {
-        github: 'https://github.com/monjane10/easyCar-mobile',
-      },
-    },
-    {
-      type: 'Aplicação Mobile',
-      title: 'Aplicativo - Geração de Dietas Personalizadas',
-      description:
-        `Aplicação mobile que gera planos alimentares personalizados com suporte de inteligência artificial.
-Geração automática de dietas com base no perfil do utilizador
-Integração com modelos de IA para recomendações inteligentes
-Interface simples e orientada ao utilizador
-Backend optimizado para processamento de dados personalizados
-Armazenamento local para acesso offline e sincronização eficiente`,
-      stack: ['React Native', 'Node.js', 'OpenAI API'],
-      image: aplicativoImg,
-      previewClassName: 'project-preview-handset',
-      imageClassName: 'project-preview-image-handset',
-      imageStyle: { '--project-image-scale': 1.16 },
-      links: {
-        github: 'https://github.com/monjane10/mobile',
-      },
-    },
-  ],
-
-  contacts: [
-    {
-      label: 'Email',
-      value: 'lourencomonjane2@gmail.com',
-      href: 'mailto:lourencomonjane2@gmail.com',
-    },
-    {
-      label: 'Telefone',
-      value: '+258 83 335 4327',
-      href: 'tel:+258833354327',
-    },
-    {
-      label: 'LinkedIn',
-      value: 'linkedin.com/in/lourencomonjane',
-      href: 'https://www.linkedin.com/in/lourencomonjane',
-    },
+  skills: [
+    { title: 'Frontend', items: ['React.js', 'React Native', 'Next.js', 'Flutter', 'HTML', 'CSS', 'Tailwind CSS', 'JavaScript', 'TypeScript'] },
+    { title: 'Backend', items: ['Node.js', 'Express.js', 'Java', 'Spring Boot', 'C#'] },
+    { title: 'Dados', items: ['PostgreSQL', 'MySQL', 'SQL Server', 'MongoDB', 'Supabase', 'Firebase'] },
+    { title: 'Ferramentas', items: ['Git', 'GitHub', 'VS Code', 'Postman', 'Swagger', 'n8n', 'DevTools'] },
   ],
 }
