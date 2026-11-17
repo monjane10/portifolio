@@ -1,4 +1,4 @@
-﻿import profileImage from '../assets/profile-avatar.jpg'
+import profileImage from '../assets/profile-avatar.jpg'
 import clinicaImg from '../assets/clinica-crop.png'
 import rastroImg from '../assets/rastro-crop.png'
 import sgiImg from '../assets/SGI2.png'
@@ -9,11 +9,10 @@ import procurementImg from '../assets/inovafem-crop.png'
 export const portfolio = {
   name: 'Lourenço Monjane',
   role: 'Desenvolvedor de Software',
+  roles: ['Desenvolvedor de Software', 'Web e Mobile'],
   location: 'Maputo, Moçambique',
   photo: profileImage,
   email: 'lourencomonjane2@gmail.com',
-  summary:
-    'Desenvolvedor de software especializado em aplicações web e mobile com React, Next.js e React Native. Com experiência também em backend, acompanho cada projecto da concepção à entrega, com foco na qualidade, no desempenho e na experiência do utilizador.',
 
   links: [
     { label: 'GitHub', href: 'https://github.com/monjane10' },
@@ -21,9 +20,29 @@ export const portfolio = {
     { label: 'WhatsApp', href: 'https://wa.me/258850741012' },
   ],
 
+  // Textos fixos das páginas de projecto
+  labels: {
+    stackTitle: 'Tecnologias',
+    stackIntro: 'Construído com',
+    linksTitle: 'Ver o projecto',
+    liveIntro: 'O projecto está online em',
+    codeIntro: 'O código está no',
+    allProjects: '← Todos os projectos',
+    backToIndex: 'Projectos',
+  },
+
+  // Texto da página "Sobre". Cada linha é um parágrafo; muda à vontade.
+  // Links: [texto](endereço). Para links internos usa #/projectos ou #/percurso.
+  about: [
+    'Desenvolvedor de software especializado no desenvolvimento de aplicações web e mobile com React, Next.js, React Native e Flutter. Com experiência também em backend, com Node.js e Spring Boot, acompanho cada projecto da concepção à entrega, com foco na qualidade, no desempenho e na experiência do utilizador.',
+    'Estou aberto a novos projectos e oportunidades. Se tiver uma ideia ou uma proposta em mente, [envie-me um email](mailto:lourencomonjane2@gmail.com).',
+    '[GitHub](https://github.com/monjane10) · [LinkedIn](https://www.linkedin.com/in/lourencomonjane) · [WhatsApp](https://wa.me/258850741012)',
+  ],
+
   projects: [
     {
       title: 'Supplyflow',
+      slug: 'supplyflow',
       year: '2026',
       featured: true,
       tags: ['Web', 'IA'],
@@ -32,10 +51,15 @@ export const portfolio = {
         'Gere as compras de uma empresa que concorre a concursos: cotações, comparação de fornecedores, propostas e entregas. A IA lê os documentos e redige as propostas.',
       stack: ['React', 'TanStack Start', 'TypeScript', 'Supabase', 'Netlify Functions', 'n8n', 'OCR'],
       image: procurementImg,
+      intro: [
+        'Gere as compras de uma empresa que concorre a concursos: cotações, comparação de fornecedores, propostas e entregas.',
+        'O objectivo é que ==a IA leia os documentos e redija as propostas==.',
+      ],
       links: { live: 'https://inovafem.netlify.app/' },
     },
     {
       title: 'TivaCV',
+      slug: 'tivacv',
       year: '2026',
       featured: true,
       tags: ['Web', 'IA', 'Pagamentos móveis'],
@@ -48,6 +72,7 @@ export const portfolio = {
     },
     {
       title: 'Carteira MZ',
+      slug: 'carteira-mz',
       year: '2026',
       featured: true,
       tags: ['PWA', 'Mobile'],
@@ -61,6 +86,7 @@ export const portfolio = {
     },
     {
       title: 'Clínica dos Olhos Choupal',
+      slug: 'clinica-dos-olhos-choupal',
       year: '2026',
       type: 'Sistema web',
       description:
@@ -71,6 +97,7 @@ export const portfolio = {
     },
     {
       title: 'Rastro',
+      slug: 'rastro',
       year: '2025',
       type: 'Plataforma web',
       description:
@@ -81,6 +108,7 @@ export const portfolio = {
     },
     {
       title: 'SGI',
+      slug: 'sgi',
       year: '2025',
       type: 'Vendas e inventário',
       description:
@@ -96,6 +124,16 @@ export const portfolio = {
       period: 'Out 2025 – actualmente',
       title: 'Desenvolvedor de Software',
       company: 'Raggio AI',
+    },
+    {
+      period: 'Abr 2026 – actualmente',
+      title: 'Facilitador de Literacia Digital',
+      company: '', // escreve aqui a organização
+    },
+    {
+      period: 'Jul 2025 – Out 2025',
+      title: 'Técnico de Informática (Estágio)',
+      company: 'INATUR',
     },
     {
       period: 'Ago 2024 – Jul 2025',
