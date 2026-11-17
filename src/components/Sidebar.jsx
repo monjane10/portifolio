@@ -3,9 +3,9 @@ import { portfolio } from '../data/portfolioData'
 import { ThemeToggle } from './ThemeToggle'
 
 const navItems = [
-  { id: 'sobre', label: 'Sobre', href: '#/' },
-  { id: 'projectos', label: 'Projectos', href: '#/projectos' },
-  { id: 'percurso', label: 'Percurso', href: '#/percurso' },
+  { id: 'sobre', label: 'Sobre', href: '/' },
+  { id: 'projectos', label: 'Projectos', href: '/projectos' },
+  { id: 'percurso', label: 'Percurso', href: '/percurso' },
 ]
 
 // Marca no índice a secção que está a ser lida
@@ -39,7 +39,7 @@ export function Sidebar({ current, headings }) {
   if (headings) {
     return (
       <aside className="sidebar sidebar-article">
-        <a className="back-link" href="#/projectos">
+        <a className="back-link" href="/projectos">
           <span aria-hidden="true">↩</span> {portfolio.labels.backToIndex}
         </a>
 
@@ -67,7 +67,7 @@ export function Sidebar({ current, headings }) {
 
   return (
     <aside className="sidebar">
-      <a className="brand" href="#/" aria-label={`${portfolio.name}, página inicial`}>
+      <a className="brand" href="/" aria-label={`${portfolio.name}, página inicial`}>
         <img className="brand-photo" src={portfolio.photo} alt="" width="40" height="40" />
         {portfolio.name}
         <span className="role-rotation">

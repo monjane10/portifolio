@@ -8,9 +8,15 @@ import { getProjectHeadings } from './lib/projectSections'
 import { Journey } from './components/Journey'
 import { portfolio } from './data/portfolioData'
 
-// Rotas por hash (#/projectos/tivacv) para funcionar em qualquer alojamento estático
+// Links antigos com # (ex. /#/projectos/tivacv) passam para o endereço limpo
+if (window.location.hash.startsWith('#/')) {
+  window.history.replaceState(null, '', window.location.hash.slice(1))
+}
+
+// Rotas pelo endereço: /, /projectos, /projectos/tivacv, /percurso
+// (o vercel.json manda todos os endereços para o index.html)
 function parseRoute() {
-  const parts = window.location.hash.replace(/^#\/?/, '').split('/').filter(Boolean)
+  const parts = window.location.pathname.split('/').filter(Boolean)
   const [page = '', slug] = parts
   if (page === 'projectos' && slug) {
     const project = portfolio.projects.find((item) => item.slug === slug)
@@ -34,8 +40,26 @@ function App() {
       setRoute(parseRoute())
       window.scrollTo(0, 0)
     }
-    window.addEventListener('hashchange', onChange)
-    return () => window.removeEventListener('hashchange', onChange)
+
+    // Links internos (href="/...") mudam de página sem recarregar o site
+    const onClick = (event) => {
+      if (event.defaultPrevented || event.button !== 0) return
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
+      const link = event.target.closest('a[href^="/"]')
+      if (!link || link.target || link.hasAttribute('download')) return
+      event.preventDefault()
+      if (link.getAttribute('href') !== window.location.pathname) {
+        window.history.pushState(null, '', link.getAttribute('href'))
+      }
+      onChange()
+    }
+
+    window.addEventListener('popstate', onChange)
+    document.addEventListener('click', onClick)
+    return () => {
+      window.removeEventListener('popstate', onChange)
+      document.removeEventListener('click', onClick)
+    }
   }, [])
 
   useEffect(() => {

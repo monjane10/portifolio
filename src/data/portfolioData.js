@@ -1,10 +1,10 @@
 import profileImage from '../assets/profile-avatar.jpg'
-import clinicaImg from '../assets/clinica-crop.png'
-import rastroImg from '../assets/rastro-crop.png'
-import sgiImg from '../assets/SGI2.png'
-import carteiraImg from '../assets/carteira-crop.png'
-import tivacvImg from '../assets/tivacv-crop.png'
-import procurementImg from '../assets/inovafem-crop.png'
+import clinicaImg from '../assets/clinica-crop.webp'
+import rastroImg from '../assets/rastro-crop.webp'
+import sgiImg from '../assets/SGI2.webp'
+import carteiraImg from '../assets/carteira-crop.webp'
+import tivacvImg from '../assets/tivacv-crop.webp'
+import procurementImg from '../assets/inovafem-crop.webp'
 
 export const portfolio = {
   name: 'Lourenço Monjane',
@@ -32,7 +32,7 @@ export const portfolio = {
   },
 
   // Texto da página "Sobre". Cada linha é um parágrafo; muda à vontade.
-  // Links: [texto](endereço). Para links internos usa #/projectos ou #/percurso.
+  // Links: [texto](endereço). Para links internos usa /projectos ou /percurso.
   about: [
     'Desenvolvedor de software especializado no desenvolvimento de aplicações web e mobile com React, Next.js, React Native e Flutter. Com experiência também em backend, com Node.js e Spring Boot, acompanho cada projecto da concepção à entrega, com foco na qualidade, no desempenho e na experiência do utilizador.',
     'Estou aberto a novos projectos e oportunidades. Se tiver uma ideia ou uma proposta em mente, [envie-me um email](mailto:lourencomonjane2@gmail.com).',

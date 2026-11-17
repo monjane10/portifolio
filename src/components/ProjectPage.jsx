@@ -75,8 +75,8 @@ export function ProjectPage({ project }) {
       </div>
 
       <nav className="article-footer" aria-label="Mais projectos">
-        <a href="#/projectos">{portfolio.labels.allProjects}</a>
-        {next && next.slug !== project.slug ? <a href={`#/projectos/${next.slug}`}>{next.title} →</a> : null}
+        <a href="/projectos">{portfolio.labels.allProjects}</a>
+        {next && next.slug !== project.slug ? <a href={`/projectos/${next.slug}`}>{next.title} →</a> : null}
       </nav>
     </article>
   )

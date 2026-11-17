@@ -10,7 +10,7 @@ export function Projects({ projects }) {
         {projects.map((project) => (
           <li key={project.slug}>
             <article>
-              <a className="project-card" href={`#/projectos/${project.slug}`}>
+              <a className="project-card" href={`/projectos/${project.slug}`}>
                 <Cover project={project} />
                 <div className="project-meta">
                   <h2>
